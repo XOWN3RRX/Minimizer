@@ -59,21 +59,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormActivate.cs" />
     <Compile Include="FormMove.cs" />
-    <Compile Include="ProcList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProcList.Designer.cs">
-      <DependentUpon>ProcList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wind.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProcList.resx">
-      <DependentUpon>ProcList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,6 +108,7 @@
     <None Include="Resources\search-2-64.jpg" />
     <None Include="Resources\start-48.jpg" />
     <None Include="Resources\stop-64.jpg" />
+    <None Include="Resources\eye-2-24.jpg" />
     <Content Include="window-4-64.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

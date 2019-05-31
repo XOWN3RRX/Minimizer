@@ -130,6 +130,9 @@
   <data name="border-color-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\border-color-64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="stop-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stop-64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="6-filled-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6-filled-64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,7 +160,7 @@
   <data name="search-2-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search-2-64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stop-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stop-64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eye-2-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye-2-24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,6 +1,8 @@
-﻿using Minimizer.Properties;
+﻿using Minimizer;
+using Minimizer.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,8 +10,11 @@ namespace MiniApp
 {
     public partial class Form1 : Form
     {
-        List<ToolStripMenuItem> lst = new List<ToolStripMenuItem>();
+        private List<ToolStripMenuItem> lst = new List<ToolStripMenuItem>();
         public IntPtr handler;
+        private List<string> procs = new List<string>();
+        int currentTime = DateTime.Now.Second;
+
 
         public Form1()
         {
@@ -19,11 +24,37 @@ namespace MiniApp
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.Opaque, true);
+            findProcessToolStripMenuItem.DropDownItemClicked += FindProcessToolStripMenuItem_DropDownItemClicked;
+            findProcessToolStripMenuItem.DropDown.ItemAdded += DropDown_ItemAdded;
+        }
+
+        private void DropDown_ItemAdded(object sender, ToolStripItemEventArgs e)
+        {
+            e.Item.MouseEnter += Form1_MouseMove;
+        }
+
+        private async void Form1_MouseMove(object sender, EventArgs e)
+        {
+            var r = (sender as ToolStripItem);
+            await Wind.PrintWindow(pictureBox1, (IntPtr)Convert.ToInt32(r.Text.Split(' ')[0]));
+
+            if(currentTime + 1 < DateTime.Now.Second)
+            {
+                GC.Collect();
+                currentTime = DateTime.Now.Second;
+            }
+        }
+
+        private void FindProcessToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            this.handler = (IntPtr)Convert.ToInt32(e.ClickedItem.Text.Split(' ')[0]);
+            this.pointer0ToolStripMenuItem.Text = "Pointer : " + this.handler.ToString();
+            this.pictureBox1.Image = null;
         }
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
-            await Wind.PrintWindow(  pictureBox1, handler);
+            await Wind.PrintWindow(pictureBox1, handler);
         }
 
         private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -47,17 +78,18 @@ namespace MiniApp
             }
         }
 
-        private void findProcessToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcList proc = new ProcList(this);
-            proc.ShowDialog();
-        }
-
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 contextMenuStrip1.Show(PointToScreen(e.Location));
+            }
+            else if (e.Button == MouseButtons.Middle)
+            {
+                if (handler != IntPtr.Zero)
+                {
+                    FormActivate.ActivateWindow(handler);
+                }
             }
         }
 
@@ -129,13 +161,13 @@ namespace MiniApp
 
             this.Location = new Point(Settings.Default.X, Settings.Default.Y);
 
-            if(Settings.Default.Landscape)
+            if (Settings.Default.Landscape)
             {
                 this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                 x9ToolStripMenuItem.Checked = true;
             }
 
-            if(Settings.Default.Transparent)
+            if (Settings.Default.Transparent)
             {
                 TransparentColor(false);
             }
@@ -239,9 +271,37 @@ namespace MiniApp
             Stop();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void activateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (handler != IntPtr.Zero)
+            {
+                FormActivate.ActivateWindow(handler);
+            }
+        }
 
+        private void findProcessToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            findProcessToolStripMenuItem.DropDownItems.Clear();
+
+            Process[] processes = Process.GetProcesses();
+
+            procs.Clear();
+
+            foreach (var item in processes)
+            {
+                if (!String.IsNullOrWhiteSpace(item.MainWindowTitle))
+                {
+                    procs.Add(item.MainWindowHandle + " " + item.MainWindowTitle);
+
+                }
+            }
+
+            procs.Sort();
+
+            foreach (var item in procs)
+            {
+                findProcessToolStripMenuItem.DropDownItems.Add(item);
+            }
         }
     }
 }

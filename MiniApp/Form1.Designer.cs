@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.stoppedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findProcessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,7 @@
             this.transpareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pointer0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopCtrlSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.activateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -64,10 +65,25 @@
             this.refreshRateToolStripMenuItem,
             this.x9ToolStripMenuItem,
             this.transpareToolStripMenuItem,
-            this.pointer0ToolStripMenuItem,
-            this.stopCtrlSToolStripMenuItem});
+            this.activateToolStripMenuItem,
+            this.stopCtrlSToolStripMenuItem,
+            this.pointer0ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(141, 180);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 224);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(315, 324);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
             // stoppedToolStripMenuItem
             // 
@@ -81,9 +97,9 @@
             // 
             this.findProcessToolStripMenuItem.Image = global::Minimizer.Properties.Resources.search_2_64;
             this.findProcessToolStripMenuItem.Name = "findProcessToolStripMenuItem";
-            this.findProcessToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.findProcessToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findProcessToolStripMenuItem.Text = "Find Process";
-            this.findProcessToolStripMenuItem.Click += new System.EventHandler(this.findProcessToolStripMenuItem_Click);
+            this.findProcessToolStripMenuItem.MouseEnter += new System.EventHandler(this.findProcessToolStripMenuItem_MouseEnter);
             // 
             // topToolStripMenuItem
             // 
@@ -189,20 +205,13 @@
             this.stopCtrlSToolStripMenuItem.Text = "Stop";
             this.stopCtrlSToolStripMenuItem.Click += new System.EventHandler(this.stopCtrlSToolStripMenuItem_Click);
             // 
-            // pictureBox1
+            // activateToolStripMenuItem
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(315, 324);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
-            this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.activateToolStripMenuItem.Image = global::Minimizer.Properties.Resources.eye_2_24;
+            this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
+            this.activateToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.activateToolStripMenuItem.Text = "Activate";
+            this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -244,6 +253,7 @@
         private System.Windows.Forms.ToolStripMenuItem x9ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transpareToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopCtrlSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activateToolStripMenuItem;
     }
 }
 
